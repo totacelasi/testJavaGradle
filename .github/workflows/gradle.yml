@@ -33,7 +33,7 @@ jobs:
   matrix:
     name: Matrix Jobs
     needs: [find-jobs]
-    container: ubuntu
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: ${{ matrix.folder }}
