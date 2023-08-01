@@ -19,7 +19,7 @@ permissions:
 jobs:
   find-jobs:
     name: Find Jobs
-    runs-on: debian:buster-slim
+    runs-on: ubuntu-latest
     outputs:
       folders: ${{ steps.jobs.outputs.folders }}
     steps:
@@ -28,7 +28,7 @@ jobs:
       - id: jobs
         uses: philips-labs/list-folders-action@v1
         with:
-          path: .
+          path: ./
 
   matrix:
     name: Matrix Jobs
