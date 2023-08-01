@@ -19,7 +19,7 @@ permissions:
 jobs:
   find-jobs:
     name: Find Jobs
-    container: debian:buster-slim
+    runs-on: debian:buster-slim
     outputs:
       folders: ${{ steps.jobs.outputs.folders }}
     steps:
