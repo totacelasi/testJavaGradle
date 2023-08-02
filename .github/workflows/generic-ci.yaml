@@ -1,4 +1,6 @@
 name:  CI Pipeline
+on:
+  workflow_call
 jobs:
   test:
     name: Test and Scan Repository
