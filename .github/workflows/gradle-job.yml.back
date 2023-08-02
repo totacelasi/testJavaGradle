@@ -18,10 +18,6 @@ permissions:
 
 jobs:
   build:
-    name: Continous Testing
-    runs:
-     using: ubuntu-latest
-     steps:
-      - name: Generic CI
-        uses: ./.github/workflows/generic-ci-steps.yaml
+    name: Generic CI
+    uses: ./.github/workflows/generic-ci-job.yaml
 
