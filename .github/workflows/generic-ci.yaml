@@ -1,11 +1,6 @@
 name:  CI Pipeline
-#on:
-#  workflow_call
-#jobs:
-#  test:
-#    name: Test Repository
-  runs-on: ubuntu-latest
-  container: ubuntu:latest
+runs-on: ubuntu-latest
+container: ubuntu:latest
   steps:
   - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
   - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
