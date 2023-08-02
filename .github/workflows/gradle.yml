@@ -18,6 +18,6 @@ permissions:
 
 jobs:
   build:
-    name: Generic CI for Morpheus API
+    name: Generic CI
     uses: ./.github/workflows/generic-ci.yaml
 
