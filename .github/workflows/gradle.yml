@@ -22,5 +22,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Generic CI
-        uses: ./.github/workflows/generic-ci-steps.yaml
+        uses: ./.github/actions
 
