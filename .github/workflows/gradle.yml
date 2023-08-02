@@ -20,7 +20,7 @@ jobs:
   build:
     name: Continous Testing
     runs:
-     using: ubuntu-latest
+      using: ubuntu-latest
     steps:
       - name: Generic CI
         uses: ./.github/workflows/generic-ci-steps.yaml
