@@ -24,5 +24,5 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Generic CI
-        uses: ./generic-ci-job.yaml
+        uses: ./.github/workflows/generic-ci-job.yaml
 
