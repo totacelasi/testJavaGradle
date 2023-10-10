@@ -1,7 +1,7 @@
 name: CI Pipeline
 description: aaa
 runs:
-  using: "composite"
+  using: "ubuntu-latest"
   steps:
     - name: Check out repository code
       uses: actions/checkout@v3
