@@ -5,7 +5,7 @@ jobs:
   test:
     name: Test Repository
     runs-on: ubuntu-latest
-    #    container: ubuntu:latest
+    container: ubuntu:latest
     permissions:
       contents: write
     steps:
