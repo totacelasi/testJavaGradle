@@ -1,0 +1,26 @@
+name: Prepare version string
+description: "Prepares a version string"
+
+inputs:
+  release:
+    type: boolean
+    required: true
+  tag:
+    required: false
+    type: string
+    default: ""
+
+outputs:
+  version:
+    value: ${{ steps.version.outputs.version }}
+
+runs: 
+  using: "composite"
+  steps:
+    - run: ./.github/actions/prepare-version/parse_branch.sh
+      env:
+        SHA: ${{ github.sha }}
+        RELEASE: ${{ inputs.release }}
+        TAG: ${{ inputs.tag }}
+      id: version
+      shell: bash

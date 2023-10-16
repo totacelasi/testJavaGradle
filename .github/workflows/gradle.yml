@@ -20,7 +20,7 @@ jobs:
   test:
     name: Test Repository
     runs-on: ubuntu-latest
-    container: ubuntu:latest
+#    container: ubuntu:latest
     steps:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
     - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
@@ -33,6 +33,12 @@ jobs:
     - name: List files in the repository ${{ github.workspace }}
       run: |
         ls -la ${{ github.workspace }}
+    - name: Prepare version
+      uses: ./.github/actions/prepare-version
+      with:
+        release: ${{ github.event.pull_request.merged }}
+        tag: ${{ steps.tag_version.outputs.new_tag }}
+      id: prepare_version
   build:
     name: Generic CI
     uses: ./.github/workflows/generic-ci-job.yaml
