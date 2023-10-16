@@ -12,12 +12,19 @@ on:
     branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 jobs:
   build:
-    name: Generic CI
-    uses: ./.github/workflows/generic-ci-job.yaml
+    name: Continous Testing
+    runs-on: ubuntu-latest
+#    container: ubuntu:latest cand folosesc container nu pot sa execut ls -la ${{ github.workspace }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+      - name: Generic CI
+        uses: ./.github/actions/custom
 
