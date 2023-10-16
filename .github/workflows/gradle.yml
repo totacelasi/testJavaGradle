@@ -17,6 +17,19 @@ permissions:
   contents: read
 
 jobs:
+  test:
+    name: Test Repository
+    runs-on: ubuntu-latest
+    #    container: ubuntu:latest
+    steps:
+    - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
+    - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
+    - name: Check out repository code
+      uses: actions/checkout@v3
+    - name: List current directory
+      run: |
+        pwd
+    - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
   build:
     name: Generic CI
     uses: ./.github/workflows/generic-ci-job.yaml
