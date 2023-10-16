@@ -38,7 +38,7 @@ jobs:
     - name: Github Tag Bump
 #      if: github.event.pull_request.merged
       id: tag_version
-      uses: actions/github-tag-action@main
+      uses: anothrNick/github-tag-action@1.64.0
 #      env:
 #        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
