@@ -16,11 +16,12 @@ on:
 permissions:
   contents: read
 
-
 jobs:
   test:
     name: Test Repository
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
 #    container: ubuntu:latest
     steps:
     - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
@@ -34,12 +35,25 @@ jobs:
     - name: List files in the repository ${{ github.workspace }}
       run: |
         ls -la ${{ github.workspace }}
+    - name: Github Tag Bump
+#      if: github.event.pull_request.merged
+      id: tag_version
+      uses: actions/github-tag-action@main
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+#        tag_prefix: ${{ inputs.app_tag_prefix }}
+    - run: echo Tag Bump ${{ steps.tag_version.outputs.new_tag }}
+      shell: bash
     - name: Prepare version
       uses: ./.github/actions/prepare-version
       with:
         release: ${{ github.event.pull_request.merged }}
         tag: ${{ steps.tag_version.outputs.new_tag }}
       id: prepare_version
+    - run: echo Publishing version ${{ steps.prepare_version.outputs.version }}
+      shell: bash
   build:
     name: Generic CI
     uses: ./.github/workflows/generic-ci-job.yaml
