@@ -23,8 +23,8 @@ jobs:
     runs-on: ubuntu-latest
 #    container: ubuntu:latest cand folosesc container nu pot sa execut ls -la ${{ github.workspace }}
     steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
       - name: Generic CI
         uses: ./.github/actions
 
