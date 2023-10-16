@@ -16,13 +16,11 @@ runs:
       shell: bash
     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
       shell: bash
-    - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      shell: bash
     - run: echo "🎉 Github workspace is ${{ github.workspace }}"
       shell: bash
     - run: echo "🍏 This job's status is ${{ job.status }}."
       shell: bash
-    - name: List files in the repository ${{ github.workspace }}
+    - name: List files in the repository
       run: |
         ls -la ${{ github.workspace }}
       shell: bash
