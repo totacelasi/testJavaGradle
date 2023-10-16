@@ -30,6 +30,9 @@ jobs:
       run: |
         pwd
     - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
+    - name: List files in the repository ${{ github.workspace }}
+      run: |
+        ls -la ${{ github.workspace }}
   build:
     name: Generic CI
     uses: ./.github/workflows/generic-ci-job.yaml
