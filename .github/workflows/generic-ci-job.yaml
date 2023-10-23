@@ -3,7 +3,7 @@ on:
   workflow_call
 jobs:
   test:
-#    this name is actualy ignored which is either stupid or something is wrong
+#    this job name is a sub-job
     name: Test Repository
     runs-on: ubuntu-latest
 #    container: ubuntu:latest
