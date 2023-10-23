@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   test:
+#    this is first step in the GHA
     name: Test Repository
     runs-on: ubuntu-latest
     permissions:
@@ -54,7 +55,34 @@ jobs:
       id: prepare_version
     - run: echo Publishing version ${{ steps.prepare_version.outputs.version }}
       shell: bash
+
+#    - name: Create Docker Image and push to a Docker Registry
+#      uses: ./.github/actions/publish-docker
+#      with:
+#        build_directory: ${{ inputs.working_directory }}
+#        host: ${{ vars.NEXUS_HOST }}
+#        image_tag: ${{ vars.NEXUS_DOCKER_REGISTRY }}/${{ inputs.app_name }}:${{ steps.prepare_version.outputs.version }}
+#        username: ${{ vars.NEXUS_SVC_USERNAME }}
+#        password: ${{ secrets.NEXUS_SVC_PASSWORD }}
+#      env:
+#        NEXUS_USR: ${{ vars.NEXUS_USER }}
+#        NEXUS_PASS: ${{ secrets.NEXUS_PASS }}
+#        GRADLE_S3_REPO_AWS_KEY: ${{ secrets.GRADLE_S3_REPO_AWS_KEY }}
+#        GRADLE_S3_REPO_AWS_SECRET_KEY: ${{ secrets.GRADLE_S3_REPO_AWS_SECRET_KEY }}
+#    - name: Create Github release
+#      if: github.event.pull_request.merged
+#      uses: actions/create-release@v1
+#      env:
+#        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#      with:
+#        tag_name: ${{ steps.prepare_version.outputs.version }}
+#        release_name: ${{ steps.prepare_version.outputs.version }}
+#        body: |
+#          ${{ steps.tag_version.outputs.change_log }}
+#        draft: true
+#        prerelease: false
   build:
+    #    this is second step in the GHA
     name: Generic CI
     uses: ./.github/workflows/generic-ci-job.yaml
 
